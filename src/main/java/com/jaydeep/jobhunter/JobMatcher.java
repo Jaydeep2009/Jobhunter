@@ -1,41 +1,99 @@
 package com.jaydeep.jobhunter;
+
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class JobMatcher {
- private static final List<String> ROLES=List.of("software engineer","software developer","software development engineer","sde","backend engineer","backend developer","java developer","developer intern","software engineering intern","engineering intern","technology intern");
- private static final List<String> SKILLS=List.of("java","spring boot","spring","backend","rest","jpa","hibernate","postgresql","sql","kafka","aws","docker","react","node.js","kotlin","android","microservices","python","c++");
- private static final List<String> LEVEL=List.of("2027","intern","internship","new grad","new graduate","fresher","entry level","0-1 year","0-2 years");
- private static final List<String> INDIA_LOCATIONS=List.of("india","bangalore","bengaluru","pune","mumbai","hyderabad","chennai","delhi","new delhi","gurgaon","gurugram","noida","kolkata","ahmedabad","jaipur","indore","chandigarh","kochi","coimbatore","thiruvananthapuram","trivandrum","nagpur","surat","vadodara","bhubaneswar","mysore","mysuru");
+    private static final List<String> ROLES = List.of(
+            "software engineer", "software developer", "software development engineer", "sde",
+            "backend engineer", "backend developer", "backend intern", "java developer", "java intern",
+            "developer intern", "software engineering intern", "software engineer intern", "sde intern",
+            "software developer intern", "engineering intern", "technology intern",
+            "graduate engineer trainee", "trainee software engineer", "associate software engineer");
 
- public static boolean relevant(Job j){
-  String s=j.searchableText();
-  return allowedLocation(j) && any(s,ROLES) && any(s,SKILLS) && any(s,LEVEL)
-      && !any(s,List.of("senior","staff","principal","manager","director","lead engineer","tech lead"));
- }
+    private static final List<String> SKILLS = List.of(
+            "java", "spring boot", "spring", "backend", "rest", "jpa", "hibernate", "postgresql", "sql",
+            "kafka", "aws", "docker", "react", "node.js", "nodejs", "kotlin", "android", "microservices",
+            "python", "c++");
 
- // India is the default target. A non-India role is accepted only when the
- // posting explicitly says it is remote/WFH, not merely hybrid or onsite.
- private static boolean allowedLocation(Job j){
-  String location=j.location()==null?"":j.location().toLowerCase().trim();
-  if(any(location,INDIA_LOCATIONS)) return true;
-  if(location.isBlank() && any(j.searchableText(),INDIA_LOCATIONS)) return true;
-  boolean remote=location.contains("remote")||location.contains("work from home")||location.contains("work-from-home")||location.contains("wfh")||location.contains("fully distributed")||location.contains("anywhere");
-  boolean hybrid=location.contains("hybrid")||location.contains("on-site")||location.contains("onsite")||location.contains("in office")||location.contains("in-office");
-  return remote && !hybrid;
- }
+    private static final List<String> LEVEL = List.of(
+            "2027", "intern", "internship", "new grad", "new graduate", "fresher", "entry level",
+            "0-1 year", "0-2 years", "0 to 1 year", "0 to 2 years", "graduate trainee");
 
- public static int score(Job j){
-  String s=j.searchableText();
-  int x=0;
-  if(s.contains("2027") || s.contains("class of 2027") || s.contains("graduating 2027") || s.contains("2027 batch")) x+=35;
-  if(any(s,List.of("intern","internship","new grad","new graduate","fresher","entry level","0-1 year","0-2 years"))) x+=25;
-  if(any(s,List.of("software engineer","sde","backend engineer","java developer"))) x+=15;
-  for(String k:SKILLS) if(s.contains(k)) x+=2;
-  String loc=j.location()==null?"":j.location().toLowerCase();
-  if(any(loc,INDIA_LOCATIONS)) x+=12;
-  else if(loc.contains("remote")||loc.contains("work from home")||loc.contains("wfh")||loc.contains("anywhere")) x+=5;
-  if(any(s,List.of("senior","staff","principal","manager","director","5+ years","6+ years","7+ years","8+ years","10+ years"))) x-=45;
-  return Math.max(0,Math.min(100,x));
- }
- private static boolean any(String s,List<String> xs){for(String x:xs)if(s.contains(x))return true;return false;}
+    private static final List<String> INDIA_LOCATIONS = List.of(
+            "india", "bangalore", "bengaluru", "pune", "mumbai", "hyderabad", "chennai", "delhi", "new delhi",
+            "gurgaon", "gurugram", "noida", "kolkata", "ahmedabad", "jaipur", "indore", "chandigarh", "kochi",
+            "coimbatore", "thiruvananthapuram", "trivandrum", "nagpur", "surat", "vadodara", "bhubaneswar",
+            "mysore", "mysuru", "mohali", "faridabad", "ghaziabad", "visakhapatnam", "vizag", "goa");
+
+    private static final List<String> SENIOR = List.of(
+            "senior", "staff", "principal", "manager", "director", "lead engineer", "tech lead", "5+ years",
+            "6+ years", "7+ years", "8+ years", "10+ years", "10 years", "12+ years");
+
+    public static boolean relevant(Job j) {
+        String s = j.searchableText();
+        return allowedLocation(j)
+                && anyPhrase(s, ROLES)
+                && anyPhrase(s, SKILLS)
+                && anyPhrase(s, LEVEL)
+                && !anyPhrase(s, SENIOR);
+    }
+
+    // India is the default target. Foreign roles are accepted only when the
+    // actual location explicitly says remote/WFH/anywhere. Hybrid/onsite is rejected.
+    private static boolean allowedLocation(Job j) {
+        String location = lower(j.location());
+        if (anyPhrase(location, INDIA_LOCATIONS)) return true;
+
+        // Some ATS feeds leave location blank. In that case inspect title/description,
+        // but deliberately do not inspect the company name to avoid false positives
+        // such as a company name containing "delhi".
+        if (location.isBlank()) {
+            String titleAndDescription = lower(j.title() + " " + j.description());
+            if (anyPhrase(titleAndDescription, INDIA_LOCATIONS)) return true;
+        }
+
+        boolean remote = containsAny(location,
+                "remote", "work from home", "work-from-home", "wfh", "fully distributed", "anywhere");
+        boolean hybridOrOnsite = containsAny(location,
+                "hybrid", "on-site", "onsite", "in office", "in-office", "office based", "office-based");
+        return remote && !hybridOrOnsite;
+    }
+
+    public static int score(Job j) {
+        String s = j.searchableText();
+        int x = 0;
+        if (containsAny(s, "class of 2027", "graduating 2027", "2027 batch", "2027 graduates", "2027")) x += 35;
+        if (anyPhrase(s, LEVEL)) x += 25;
+        if (anyPhrase(s, List.of("software engineer intern", "sde intern", "backend intern", "java intern",
+                "software engineer", "software development engineer", "backend engineer", "java developer"))) x += 15;
+        for (String k : SKILLS) if (hasPhrase(s, k)) x += 2;
+        String loc = lower(j.location());
+        if (anyPhrase(loc, INDIA_LOCATIONS)) x += 20;
+        else if (containsAny(loc, "remote", "work from home", "work-from-home", "wfh", "anywhere")) x += 5;
+        if (anyPhrase(s, SENIOR)) x -= 60;
+        return Math.max(0, Math.min(100, x));
+    }
+
+    private static boolean anyPhrase(String text, List<String> phrases) {
+        for (String p : phrases) if (hasPhrase(text, p)) return true;
+        return false;
+    }
+
+    private static boolean hasPhrase(String text, String phrase) {
+        String p = phrase.toLowerCase(Locale.ROOT).trim();
+        if (p.isBlank()) return false;
+        if (p.matches(".*[^a-z0-9].*")) return text.contains(p);
+        return Pattern.compile("(?<![a-z0-9])" + Pattern.quote(p) + "(?![a-z0-9])")
+                .matcher(text).find();
+    }
+
+    private static boolean containsAny(String text, String... values) {
+        for (String v : values) if (text.contains(v)) return true;
+        return false;
+    }
+
+    private static String lower(String s) {
+        return s == null ? "" : s.toLowerCase(Locale.ROOT).trim();
+    }
 }
