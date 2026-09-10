@@ -7,9 +7,14 @@ public class JobHunterApp {
 
     public static void main(String[] args) throws Exception {
         List<JobCollector> cs = List.of(
-                new GreenhouseCollector(List.of("airbnb", "stripe", "datadog", "cloudflare", "hubspot", "plaid", "reddit", "ramp", "coinbase", "duolingo", "figma", "notion", "okta", "asana", "brex", "rippling", "toast", "affirm", "lyft", "doordash")),
-                new LeverCollector(List.of("netflix", "shopify", "scaleai", "anduril", "anthropic", "intercom", "samsara", "mistral", "pinterest", "coursera", "udemy", "benchling", "faire", "gusto", "flexport")),
-                new AshbyCollector(List.of("Ashby", "OpenAI", "Ramp", "Linear", "Notion", "Vercel", "Figma", "Rippling")),
+                new GreenhouseCollector(List.of(
+                        "airbnb", "stripe", "datadog", "cloudflare", "hubspot", "plaid", "reddit", "ramp", "coinbase", "duolingo",
+                        "figma", "notion", "okta", "asana", "brex", "rippling", "toast", "affirm", "lyft", "doordash")),
+                new LeverCollector(List.of(
+                        "netflix", "shopify", "scaleai", "anduril", "anthropic", "intercom", "samsara", "mistral", "pinterest", "coursera",
+                        "udemy", "benchling", "faire", "gusto", "flexport", "weekdayworks", "drivetrain", "paytm", "entrata", "oneimpression", "resilinc")),
+                new AshbyCollector(List.of(
+                        "Ashby", "OpenAI", "Ramp", "Linear", "Notion", "Vercel", "Figma", "Rippling", "certa", "sarvam", "emergence")),
                 new RemoteOkCollector()
         );
 
@@ -51,8 +56,6 @@ public class JobHunterApp {
         if (fresh.isEmpty()) return;
 
         new EmailSender().send(fresh);
-
-        // Only record jobs after the email succeeds, so a failed email does not lose alerts.
         seen.mark(fresh.stream().map(Job::url).toList());
         quota.add(fresh.size());
         System.out.println("Email sent; " + fresh.size() + " jobs marked seen; daily quota updated.");
