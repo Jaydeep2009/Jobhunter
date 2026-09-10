@@ -11,6 +11,7 @@ https://jobs.ashbyhq.com/Notion/e32799d2-8ef8-4803-8189-c72514afa816/application
 https://jobs.ashbyhq.com/OpenAI/44abed05-4b45-4aa0-bee6-45d113bbef66/application
 https://jobs.ashbyhq.com/Notion/e66c6658-9e65-4c58-8db2-844628b6e8f8/application
 https://stripe.com/jobs/search
+https://www.adzuna.in/land/ad/5876872337
 https://boards.greenhouse.io/cloudflare/jobs/8088751
 https://jobs.ashbyhq.com/Ramp/d1183b00-6590-4fe4-a585-28d84e578fe3/application
 https://careers.datadoghq.com/detail/8139662/
@@ -54,6 +55,7 @@ https://boards.greenhouse.io/cloudflare/jobs/7446310
 https://jobs.ashbyhq.com/OpenAI/1bb1f351-41a2-43a5-bac1-259859886cb3/application
 https://jobs.ashbyhq.com/OpenAI/d8794980-1d3f-4d82-8b48-811449b6c492/application
 https://boards.greenhouse.io/figma/jobs/6131089004
+https://www.adzuna.in/details/5876940059
 https://boards.greenhouse.io/cloudflare/jobs/8015230
 https://jobs.ashbyhq.com/Ramp/198150d6-789a-4ef8-999f-93a49656d4f1/application
 https://jobs.ashbyhq.com/OpenAI/e99105f1-0a15-4f25-9538-60312568f835/application
@@ -75,6 +77,7 @@ https://jobs.ashbyhq.com/OpenAI/13995549-e8cc-498f-9eaa-1869067ac35b/application
 https://boards.greenhouse.io/cloudflare/jobs/7831810
 https://jobs.ashbyhq.com/OpenAI/c1316397-25bb-4add-9e9d-0e3ea8ba929a/application
 https://www.coinbase.com/careers/positions/8072932
+https://www.adzuna.in/land/ad/5876028419
 https://jobs.ashbyhq.com/Notion/49bdf081-6e20-4323-8c73-6d6b19544ff5/application
 https://www.brex.com/careers/8536424002
 https://jobs.ashbyhq.com/Notion/bc9a9573-e963-48a7-b7b9-a32017f28916/application
@@ -84,4 +87,5 @@ https://careers.toasttab.com/jobs
 https://jobs.ashbyhq.com/OpenAI/f58cb1eb-9642-4a4d-a14d-d7a57d583a11/application
 https://www.brex.com/careers/8524941002
 https://jobs.ashbyhq.com/certa/b4026cb6-807d-4046-a5d7-605ee5fa5595/application
+https://www.adzuna.in/details/5875734854
 https://jobs.ashbyhq.com/Ramp/5fe4c64e-9336-4384-9e6f-ff32eeb3fdae/application
