@@ -9,12 +9,18 @@ public class JobHunterApp {
         List<JobCollector> cs = List.of(
                 new GreenhouseCollector(List.of(
                         "airbnb", "stripe", "datadog", "cloudflare", "hubspot", "plaid", "reddit", "ramp", "coinbase", "duolingo",
-                        "figma", "notion", "okta", "asana", "brex", "rippling", "toast", "affirm", "lyft", "doordash")),
+                        "figma", "notion", "okta", "asana", "brex", "rippling", "toast", "affirm", "lyft", "doordash",
+                        "razorpay", "swiggy", "zomato", "meesho", "phonepe", "groww", "browserstack", "postman", "freshworks", "chargebee")),
                 new LeverCollector(List.of(
                         "netflix", "shopify", "scaleai", "anduril", "anthropic", "intercom", "samsara", "mistral", "pinterest", "coursera",
-                        "udemy", "benchling", "faire", "gusto", "flexport", "weekdayworks", "drivetrain", "paytm", "entrata", "oneimpression", "resilinc")),
+                        "udemy", "benchling", "faire", "gusto", "flexport", "weekdayworks", "drivetrain", "paytm", "entrata", "oneimpression", "resilinc",
+                        "razorpay", "phonepe", "meesho", "swiggy", "dream11", "clevertap", "browserstack", "postman", "freshworks", "chargebee")),
                 new AshbyCollector(List.of(
-                        "Ashby", "OpenAI", "Ramp", "Linear", "Notion", "Vercel", "Figma", "Rippling", "certa", "sarvam", "emergence")),
+                        "Ashby", "OpenAI", "Ramp", "Linear", "Notion", "Vercel", "Figma", "Rippling", "certa", "sarvam", "emergence",
+                        "zepto", "meesho", "browserstack", "groww", "cred")),
+                new SmartRecruitersCollector(List.of(
+                        "HitachiSolutions", "WNSGlobalServices144", "BigBinary", "RepliconSoftware", "schoolapply",
+                        "CognitiveCloudsSoftwarePrivateLimited", "linkedin3", "IINTRIS1", "T-SystemsICTIndiaPvtLtd1", "intuit2")),
                 new RemoteOkCollector()
         );
 
