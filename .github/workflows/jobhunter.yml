@@ -32,6 +32,7 @@ jobs:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           MAIL_TO: ${{ secrets.MAIL_TO }}
+          JOBVETTA_API_KEY: ${{ secrets.JOBVETTA_API_KEY }}
         run: mvn -q -DskipTests package && java -jar target/jobhunter-1.0.0.jar
 
       - name: Persist deduplication and daily quota state
