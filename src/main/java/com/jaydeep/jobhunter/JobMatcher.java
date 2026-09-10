@@ -24,6 +24,17 @@ public class JobMatcher {
   return l.contains("remote")||l.contains("work from home")||l.contains("worldwide")||l.contains("anywhere")||l.contains("global");
  }
 
- public static int score(Job j){String s=j.searchableText();int x=0;if(s.matches(".*(\\b2027\\b|class of 2027|graduating 2027|2027 batch).*") )x+=35;if(any(s,List.of("intern","internship","new grad","new graduate","fresher","entry level","0-1 year","0-2 years")))x+=25;if(any(s,List.of("software engineer","sde","backend engineer","java developer")))x+=15;for(String k:SKILLS)if(s.contains(k))x+=2;if(j.location()!=null&&j.location().toLowerCase().matches(".*(india|remote|work from home|worldwide|anywhere|global).*))x+=5;if(any(s,List.of("senior","staff","principal","manager","director","5+ years","6+ years","7+ years","8+ years","10+ years")))x-=45;return Math.max(0,Math.min(100,x));}
+ public static int score(Job j){
+  String s=j.searchableText();
+  int x=0;
+  if(s.matches(".*(\\b2027\\b|class of 2027|graduating 2027|2027 batch).*))x+=35;
+  if(any(s,List.of("intern","internship","new grad","new graduate","fresher","entry level","0-1 year","0-2 years")))x+=25;
+  if(any(s,List.of("software engineer","sde","backend engineer","java developer")))x+=15;
+  for(String k:SKILLS)if(s.contains(k))x+=2;
+  if(allowedLocation(j.location()))x+=5;
+  if(any(s,List.of("senior","staff","principal","manager","director","5+ years","6+ years","7+ years","8+ years","10+ years")))x-=45;
+  return Math.max(0,Math.min(100,x));
+ }
+
  private static boolean any(String s,List<String> xs){for(String x:xs)if(s.contains(x))return true;return false;}
 }
