@@ -12,6 +12,8 @@ https://jobs.ashbyhq.com/OpenAI/44abed05-4b45-4aa0-bee6-45d113bbef66/application
 https://jobs.ashbyhq.com/Notion/e66c6658-9e65-4c58-8db2-844628b6e8f8/application
 https://stripe.com/jobs/search
 https://boards.greenhouse.io/cloudflare/jobs/8088751
+https://jobs.ashbyhq.com/Ramp/d1183b00-6590-4fe4-a585-28d84e578fe3/application
+https://careers.datadoghq.com/detail/8139662/
 https://jobs.ashbyhq.com/Ramp/be496b52-cfbf-494e-b862-61fb4a188b24/application
 https://jobs.ashbyhq.com/OpenAI/ee6b7ece-ffcb-4546-8b4c-ef755ec21c14/application
 https://job-boards.greenhouse.io/reddit/jobs/8139781
@@ -22,6 +24,7 @@ https://jobs.ashbyhq.com/OpenAI/118b71ad-0daa-497d-9061-68e90ea03368/application
 https://jobs.ashbyhq.com/Ramp/2a4968ae-220c-471b-b890-a011de570bbb/application
 https://jobs.ashbyhq.com/OpenAI/71838fdf-4476-490c-81b6-4bf0746f6774/application
 https://jobs.ashbyhq.com/Notion/3fba1c39-c5cb-47d7-9ad2-1cec4d7e9d0c/application
+https://www.coinbase.com/careers/positions/8099099
 https://jobs.ashbyhq.com/OpenAI/52c72cb9-7c44-4cba-b440-e05262a38491/application
 https://jobs.ashbyhq.com/OpenAI/f6278b60-dd42-4aa8-a3cd-c105f75ae8ae/application
 https://jobs.ashbyhq.com/OpenAI/e14fc37c-7ae5-4a6b-ba0d-a36860cf9bb2/application
@@ -43,6 +46,7 @@ https://jobs.ashbyhq.com/OpenAI/a0ccedf1-2bb7-4f10-8be8-db50f9ae02c3/application
 https://jobs.ashbyhq.com/OpenAI/20f525b7-f958-4c95-a055-f914ab3adb95/application
 https://job-boards.greenhouse.io/affirm/jobs/7796530003
 https://jobs.ashbyhq.com/Ramp/f5b60cf1-c0ec-42c1-89db-ece853e998ab/application
+https://www.coinbase.com/careers/positions/8060884
 https://jobs.ashbyhq.com/OpenAI/fff02c39-1185-427c-bf89-70d7eaa5e3db/application
 https://jobs.ashbyhq.com/OpenAI/2b5e8e15-7952-4170-a927-2ad68e318ed6/application
 https://jobs.ashbyhq.com/OpenAI/2d7f1028-ce9b-49c7-acc8-782714ca1cf4/application
@@ -55,6 +59,7 @@ https://jobs.ashbyhq.com/Ramp/198150d6-789a-4ef8-999f-93a49656d4f1/application
 https://jobs.ashbyhq.com/OpenAI/e99105f1-0a15-4f25-9538-60312568f835/application
 https://boards.greenhouse.io/cloudflare/jobs/7462801
 https://jobs.ashbyhq.com/Ramp/c01a2ed9-fcb4-48c0-ad7a-c59476d9c986/application
+https://jobs.ashbyhq.com/OpenAI/38ddaa2c-a490-427a-8457-0e92bf00138c/application
 https://boards.greenhouse.io/cloudflare/jobs/8052785
 https://jobs.ashbyhq.com/OpenAI/f6880901-6527-4b71-9f70-bc8d38989b84/application
 https://www.brex.com/careers/8366850002
@@ -69,6 +74,7 @@ https://www.coinbase.com/careers/positions/7985187
 https://jobs.ashbyhq.com/OpenAI/13995549-e8cc-498f-9eaa-1869067ac35b/application
 https://boards.greenhouse.io/cloudflare/jobs/7831810
 https://jobs.ashbyhq.com/OpenAI/c1316397-25bb-4add-9e9d-0e3ea8ba929a/application
+https://www.coinbase.com/careers/positions/8072932
 https://jobs.ashbyhq.com/Notion/49bdf081-6e20-4323-8c73-6d6b19544ff5/application
 https://www.brex.com/careers/8536424002
 https://jobs.ashbyhq.com/Notion/bc9a9573-e963-48a7-b7b9-a32017f28916/application
