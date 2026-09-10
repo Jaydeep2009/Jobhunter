@@ -21,6 +21,7 @@ public class JobHunterApp {
                 new SmartRecruitersCollector(List.of(
                         "HitachiSolutions", "WNSGlobalServices144", "BigBinary", "RepliconSoftware", "schoolapply",
                         "CognitiveCloudsSoftwarePrivateLimited", "linkedin3", "IINTRIS1", "T-SystemsICTIndiaPvtLtd1", "intuit2")),
+                new JobvettaCollector(),
                 new RemoteOkCollector()
         );
 
