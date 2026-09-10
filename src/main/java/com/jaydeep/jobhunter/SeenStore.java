@@ -1,0 +1,3 @@
+package com.jaydeep.jobhunter;
+import java.io.*;import java.nio.file.*;import java.util.*;
+public class SeenStore {private final Path path;private final Set<String> seen=new HashSet<>();public SeenStore(String f){path=Path.of(f);try{if(Files.exists(path))seen.addAll(Files.readAllLines(path));}catch(IOException e){throw new UncheckedIOException(e);}}public boolean contains(String u){return seen.contains(norm(u));}public void mark(Collection<String> urls)throws IOException{for(String u:urls)if(u!=null&&!u.isBlank())seen.add(norm(u));Files.write(path,seen,StandardOpenOption.CREATE,StandardOpenOption.TRUNCATE_EXISTING);}private String norm(String u){return u.trim().replaceAll("[?#].*$","");}}
