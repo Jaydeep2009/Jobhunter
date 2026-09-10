@@ -1,34 +1,46 @@
 name: JobHunter
+
 on:
   workflow_dispatch:
   schedule:
     - cron: '17 */4 * * *'
+
 permissions:
   contents: write
+
+concurrency:
+  group: jobhunter-main
+  cancel-in-progress: false
+
 jobs:
   discover-and-email:
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
       - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '17'
           cache: maven
+
       - name: Build and run
         env:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           MAIL_TO: ${{ secrets.MAIL_TO }}
         run: mvn -q -DskipTests package && java -jar target/jobhunter-1.0.0.jar
-      - name: Persist deduplication state
+
+      - name: Persist deduplication and daily quota state
         if: success()
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add seen_urls.txt
+          git add seen_urls.txt daily_quota.txt
           git diff --cached --quiet && exit 0
-          git commit -m 'chore: update seen job URLs'
+          git commit -m 'chore: update job alert state'
           git pull --rebase origin main
           git push origin HEAD:main
