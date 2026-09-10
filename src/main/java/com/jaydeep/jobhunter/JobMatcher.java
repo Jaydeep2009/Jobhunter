@@ -8,31 +8,27 @@ public class JobMatcher {
 
  public static boolean relevant(Job j){
   String s=j.searchableText();
-  return allowedLocation(j.location())
-      && any(s,ROLES)
-      && any(s,SKILLS)
-      && any(s,LEVEL)
+  return allowedLocation(j.location()) && any(s,ROLES) && any(s,SKILLS) && any(s,LEVEL)
       && !any(s,List.of("senior","staff","principal","manager","director"));
  }
 
- // Accept jobs physically located in India, or jobs explicitly marked remote.
- // This allows an overseas remote/WFH role while excluding overseas onsite/hybrid roles.
+ // India-based jobs are allowed. Overseas jobs are allowed only when the job location is explicitly remote/WFH.
  private static boolean allowedLocation(String location){
   if(location==null)return false;
   String l=location.toLowerCase().trim();
-  if(l.contains("india")||l.matches(".*\\bind\\b.*"))return true;
-  return l.contains("remote")||l.contains("work from home")||l.contains("worldwide")||l.contains("anywhere")||l.contains("global");
+  if(l.contains("india") || l.matches(".*\\bind\\b.*")) return true;
+  return l.contains("remote") || l.contains("work from home") || l.contains("worldwide") || l.contains("anywhere") || l.contains("global");
  }
 
  public static int score(Job j){
   String s=j.searchableText();
   int x=0;
-  if(s.matches(".*(\\b2027\\b|class of 2027|graduating 2027|2027 batch).*))x+=35;
-  if(any(s,List.of("intern","internship","new grad","new graduate","fresher","entry level","0-1 year","0-2 years")))x+=25;
-  if(any(s,List.of("software engineer","sde","backend engineer","java developer")))x+=15;
-  for(String k:SKILLS)if(s.contains(k))x+=2;
-  if(allowedLocation(j.location()))x+=5;
-  if(any(s,List.of("senior","staff","principal","manager","director","5+ years","6+ years","7+ years","8+ years","10+ years")))x-=45;
+  if(s.contains("2027") || s.contains("class of 2027") || s.contains("graduating 2027") || s.contains("2027 batch")) x+=35;
+  if(any(s,List.of("intern","internship","new grad","new graduate","fresher","entry level","0-1 year","0-2 years"))) x+=25;
+  if(any(s,List.of("software engineer","sde","backend engineer","java developer"))) x+=15;
+  for(String k:SKILLS) if(s.contains(k)) x+=2;
+  if(allowedLocation(j.location())) x+=5;
+  if(any(s,List.of("senior","staff","principal","manager","director","5+ years","6+ years","7+ years","8+ years","10+ years"))) x-=45;
   return Math.max(0,Math.min(100,x));
  }
 
