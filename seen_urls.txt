@@ -103,6 +103,7 @@ https://jobs.ashbyhq.com/Ramp/d1183b00-6590-4fe4-a585-28d84e578fe3/application
 https://careers.datadoghq.com/detail/8139662/
 https://www.adzuna.in/details/5896645822
 https://www.adzuna.in/land/ad/5870529548
+https://in.linkedin.com/jobs/view/computer-science-engineer-intern-entry-level-fresher-programming-software-development-sql-remote-at-skillzenloop-4470589140
 https://jobs.ashbyhq.com/OpenAI/5acf4854-1d42-40ca-bff8-4f6f04cdce68/application
 https://jobs.ashbyhq.com/OpenAI/71838fdf-4476-490c-81b6-4bf0746f6774/application
 https://www.adzuna.in/details/5878665739
@@ -119,6 +120,7 @@ https://job-boards.greenhouse.io/affirm/jobs/7985907003
 https://job-boards.greenhouse.io/affirm/jobs/7796530003
 https://www.adzuna.in/details/5875734312
 https://boards.greenhouse.io/figma/jobs/6131089004
+https://in.linkedin.com/jobs/view/software-developer-intern-entry-level-fresher-programming-git-sql-software-development-remote-at-skillzenloop-4470593037
 https://www.adzuna.in/details/5876718722
 https://www.adzuna.in/details/5876718721
 https://jobs.ashbyhq.com/OpenAI/38ddaa2c-a490-427a-8457-0e92bf00138c/application
@@ -144,6 +146,7 @@ https://job-boards.greenhouse.io/affirm/jobs/7807508003
 https://jobs.ashbyhq.com/Notion/85947779-6b87-466a-98bc-30a640448c28/application
 https://jobs.ashbyhq.com/OpenAI/44abed05-4b45-4aa0-bee6-45d113bbef66/application
 https://stripe.com/jobs/search
+https://in.linkedin.com/jobs/view/java-developer-intern-entry-level-fresher-java-sql-oop-git-remote-at-skillzenloop-4470579457
 https://www.adzuna.in/details/5876940996
 https://in.linkedin.com/jobs/view/associate-software-engineer-at-medanta-4468889214
 https://www.adzuna.in/land/ad/5897296113
